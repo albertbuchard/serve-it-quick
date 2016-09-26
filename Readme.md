@@ -7,7 +7,7 @@ First, you need node.js:
 
 Then in your terminal:
 
-    $npm install serve-it-quick
+    $git clone https://github.com/albertbuchard/serve-it-quick.git
     $cd serve-it-quick
     $npm install
     $node serve
