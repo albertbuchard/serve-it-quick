@@ -52,7 +52,7 @@ if (!file_exists($filepath)) {
 
 // authorized files
 $authorizedFileExt = array("PNG", "MAP", "JPG", "GIF", "WOFF2", "BABYLON", "OBJ", "SBSAR", "TGA");
-$authorizedTextFileExt = array("TXT", "CSS", "CSV", "JS", "JSON", "MAP", "TEMPLATE", "HTML");
+$authorizedTextFileExt = array("PHP","TXT", "CSS", "CSV", "JS", "JSON", "MAP", "TEMPLATE", "HTML");
 
 
 // css text file
@@ -66,13 +66,13 @@ if (strtoupper(pathinfo($filename, PATHINFO_EXTENSION)) == "CSS") {
     exit;
 }
 
-// generic text file
+// Other text files
 if (in_array(strtoupper(pathinfo($filename, PATHINFO_EXTENSION)), $authorizedTextFileExt)) {
   include $filepath;
   exit;
 }
 
-// non generic or specific text file
+// MIME protocol for other files
 if (in_array(strtoupper(pathinfo($filename, PATHINFO_EXTENSION)), $authorizedFileExt)) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
