@@ -1,5 +1,5 @@
 {
-  "name": "serveItQuick",
+  "name": "serve-it-quick",
   "version": "1.0.0",
   "description": "A node-php server platform with the simplest of custom router for development",
   "main": "serve.js",
@@ -11,15 +11,18 @@
   }, 
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/albertbuchard/behavioralCW.git" 
+    "url": "git+https://github.com/albertbuchard/serve-it-quick.git" 
   },
   "keywords": [
-    "CW"
+    "server",
+    "php",
+    "node",
+    "router"
   ],
   "author": "Albert Buchard",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/albertbuchard/serve-it-quick/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/albertbuchard/serve-it-quick"
 }
