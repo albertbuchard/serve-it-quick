@@ -1,6 +1,6 @@
 {
   "name": "serve-it-quick",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node-php server platform with the simplest of custom router for development",
   "main": "serve.js",
   "scripts": {
@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "node-php-server": "^0.1.2"
-  }, 
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/albertbuchard/serve-it-quick.git" 
+    "url": "git+https://github.com/albertbuchard/serve-it-quick.git"
   },
   "keywords": [
     "server",
