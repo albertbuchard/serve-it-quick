@@ -5,9 +5,12 @@
             Index Page
         </title>
     </head>
+    <?
+        $variableOne = "Howdy !";
+    ?>
     <body>
         <center>
-            Ceci est subdomain-example
+            This is subdomain-example. And this is a php variable : <? print($variableOne) ?>
         </center>
     </body>
 </html>

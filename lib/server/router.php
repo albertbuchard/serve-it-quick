@@ -27,7 +27,14 @@ $pathToViews = "public/html/".$subdomain."/";
 
 // Check if view requested
 if ($url["path"]=="/") {
-  include $pathToViews."index.html";
+  if (file_exists($pathToViews."index.html")) {
+    include $pathToViews."index.html";
+  } else if (file_exists($pathToViews."index.php")) {
+    include $pathToViews."index.php";
+  } else { 
+    echo("Router Error: No index file found. ". $pathToViews."index.php not found !");
+  }
+  
   exit;
 } 
 

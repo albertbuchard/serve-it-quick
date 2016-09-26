@@ -1,5 +1,5 @@
 #serveItQuick
-A node-php server platform with the simplest of custom router for development.
+A node-php server platform with the simplest of custom router for local development.
 
 !! Subdomains work on Chrome only for now !!
 
