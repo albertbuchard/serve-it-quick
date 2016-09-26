@@ -1,9 +1,9 @@
 #serveItQuick
 A node-php server platform with the simplest of custom router for development.
-!! Works on Chrome only for now !!
+!! Subdomains work on Chrome only for now !!
 
 #Install
-First, you need node.js:
+First, you need to install node.js: https://nodejs.org/en/
 
 Then in your terminal:
 
