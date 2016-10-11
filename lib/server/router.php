@@ -22,8 +22,9 @@ if (!in_array($subdomain, $validSubdomains)) {
 } 
 
 // Change the website directory as needed
-$pathToWebFolder = "public/html/".$subdomain."/"; 
-$pathToViews = "public/html/".$subdomain."/";
+chdir ("public/html/".$subdomain."/");
+$pathToWebFolder = ""; 
+$pathToViews = "";
 
 // Check if view requested
 if ($url["path"]=="/") {
