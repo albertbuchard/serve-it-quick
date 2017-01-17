@@ -55,5 +55,8 @@ node-php-server
 
 php if you are on windows
 
+# Current known issue
+Sometimes does not find the file when using include or require with "./" in the include path.
+
 #License
-MIT 
+MIT

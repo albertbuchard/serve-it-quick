@@ -33,6 +33,12 @@ $pathToViews = "";
 $filename = urldecode(basename($url["path"]));
 $filepath = urldecode($pathToWebFolder.substr($url["path"], 1));
 
+// Get the subfolder if necessary
+$subfolder = '';
+$explodedPath = explode("/", $filepath);
+if (sizeof($explodedPath) > 1) {
+    $subfolder = "/".implode("/", array_slice($explodedPath, 0, sizeof($explodedPath)-1));
+}
 
 // Check if the call was made to the api with the api/noExtension/afterTheFile style
 if (($apiRerouting !== "")&&($filepath !== "")&&(pathinfo($filename, PATHINFO_EXTENSION) === "")) {
@@ -68,6 +74,11 @@ if (!file_exists($filepath)) {
 $authorizedFileExt = array("PNG", "MAP", "JPG", "GIF", "WOFF2", "BABYLON", "OBJ", "SBSAR", "TGA");
 $authorizedTextFileExt = array("PHP","TXT", "CSS", "CSV", "JS", "JSON", "MAP", "TEMPLATE", "HTML");
 
+// PHP file
+if (strtoupper(pathinfo($filename, PATHINFO_EXTENSION)) === "PHP") {
+    include $filepath;
+    exit;
+}
 
 // css text file
 if (strtoupper(pathinfo($filename, PATHINFO_EXTENSION)) == "CSS") {
