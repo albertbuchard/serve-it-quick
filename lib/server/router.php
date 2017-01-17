@@ -1,8 +1,11 @@
-<? 
+<?php
 // Amazingly Superb Router v1.0
 //
 // By. Albert Buchard 2016
 header("Access-Control-Allow-Origin: *");
+
+// constants
+$apiRerouting = "api/api.php";
 
 // parse the url
 $url = parse_url($_SERVER['REQUEST_URI']);
@@ -18,38 +21,48 @@ $validSubdomains = array("subdomain-example",
   "another-subdomain");
 
 if (!in_array($subdomain, $validSubdomains)) {
-  $subdomain = $defaultSubdomain;
-} 
+    $subdomain = $defaultSubdomain;
+}
 
 // Change the website directory as needed
-chdir ("public/html/".$subdomain."/");
-$pathToWebFolder = ""; 
+chdir("public/html/".$subdomain."/");
+$pathToWebFolder = "";
 $pathToViews = "";
-
-// Check if view requested
-if ($url["path"]=="/") {
-  if (file_exists($pathToViews."index.html")) {
-    include $pathToViews."index.html";
-  } else if (file_exists($pathToViews."index.php")) {
-    include $pathToViews."index.php";
-  } else { 
-    echo("Router Error: No index file found. ". $pathToViews."index.php not found !");
-  }
-  
-  exit;
-} 
 
 // Get the requested filename from URI
 $filename = urldecode(basename($url["path"]));
 $filepath = urldecode($pathToWebFolder.substr($url["path"], 1));
 
 
-// check if file exists
+// Check if the call was made to the api with the api/noExtension/afterTheFile style
+if (($apiRerouting !== "")&&(pathinfo($filename, PATHINFO_EXTENSION) === "")) {
+    if (file_exists($apiRerouting)) {
+        $apiString = $filepath;
+        include $apiRerouting;
+    } else {
+        echo("Router Error: No api file found. ". $apiRerouting." not found !");
+    }
+
+    exit;
+} elseif ((pathinfo($filename, PATHINFO_EXTENSION) === "")||($url["path"]=="/")) {
+    // if no path was set or if api rerouting is set to '' with api style call, reroute to index
+   if (file_exists($pathToViews."index.php")) {
+       include $pathToViews."index.php";
+   } elseif (file_exists($pathToViews."index.html")) {
+       include $pathToViews."index.html";
+   } else {
+       echo("Router Error: No index file found. ". $pathToViews."index.php not found !");
+   }
+    exit;
+}
+
+
+// if an extension is provided - checks if file exists
 if (!file_exists($filepath)) {
-  var_dump(pathinfo($filename, PATHINFO_EXTENSION));
-  echo("Error: ". $filepath ." not found !");
-  exit;
-} 
+    var_dump(pathinfo($filename, PATHINFO_EXTENSION));
+    echo("Error: ". $filepath ." not found !");
+    exit;
+}
 
 // authorized files
 $authorizedFileExt = array("PNG", "MAP", "JPG", "GIF", "WOFF2", "BABYLON", "OBJ", "SBSAR", "TGA");
@@ -69,8 +82,8 @@ if (strtoupper(pathinfo($filename, PATHINFO_EXTENSION)) == "CSS") {
 
 // Other text files
 if (in_array(strtoupper(pathinfo($filename, PATHINFO_EXTENSION)), $authorizedTextFileExt)) {
-  include $filepath;
-  exit;
+    include $filepath;
+    exit;
 }
 
 // MIME protocol for other files
@@ -89,9 +102,6 @@ if (in_array(strtoupper(pathinfo($filename, PATHINFO_EXTENSION)), $authorizedFil
 // fallback error
 $pathError = true;
 if ($pathError) {
-  var_dump(pathinfo($filename, PATHINFO_EXTENSION));
-  echo("Error: invalid file extension !");
+    var_dump(pathinfo($filename, PATHINFO_EXTENSION));
+    echo("Error: invalid file extension !");
 }
-
-
-?>
