@@ -93,7 +93,7 @@ if (strtoupper(pathinfo($filename, PATHINFO_EXTENSION)) == "CSS") {
 
 // Other text files
 if (in_array(strtoupper(pathinfo($filename, PATHINFO_EXTENSION)), $authorizedTextFileExt)) {
-    include $filepath;
+    readfile($filepath);
     exit;
 }
 
