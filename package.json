@@ -1,6 +1,6 @@
 {
   "name": "serve-it-quick",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A node-php server platform with the simplest of custom router for local development",
   "main": "serve.js",
   "scripts": {
