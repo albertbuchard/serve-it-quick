@@ -35,7 +35,7 @@ $filepath = urldecode($pathToWebFolder.substr($url["path"], 1));
 
 
 // Check if the call was made to the api with the api/noExtension/afterTheFile style
-if (($apiRerouting !== "")&&(pathinfo($filename, PATHINFO_EXTENSION) === "")) {
+if (($apiRerouting !== "")&&($filepath !== "")&&(pathinfo($filename, PATHINFO_EXTENSION) === "")) {
     if (file_exists($apiRerouting)) {
         $apiString = $filepath;
         include $apiRerouting;

@@ -31,7 +31,7 @@ The php router file is in lib/server/router.php. To customize the router you can
 
 3) By default the router will look for the subdomain _and the views_ in public/html/subdomain. Change that as needed:
 
-    $pathToWebFolder = "public/html/".$subdomain."/"; 
+    $pathToWebFolder = "public/html/".$subdomain."/";
     $pathToViews = "public/html/".$subdomain."/";
 
 4) By default it looks for an index.php or index.html. An error is returned if the path does not contain an index file :
@@ -41,12 +41,12 @@ The php router file is in lib/server/router.php. To customize the router you can
         include $pathToViews."index.html";
       } else if (file_exists($pathToViews."index.php")) {
         include $pathToViews."index.php";
-      } else { 
+      } else {
         echo("Router Error: No index file found. ". $pathToViews."index.php not found !");
       }
-      
+
       exit;
-    } 
+    }
 
 #Dependencies
 node
@@ -56,4 +56,4 @@ node-php-server
 php if you are on windows
 
 #License
-MIT
+MIT 
