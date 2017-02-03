@@ -3,6 +3,7 @@ A node-php server platform with the simplest of custom router for local developm
 
 !! Subdomains work on Chrome only for now !!
 
+rajoute 
 #Install
 First, you need to install node.js: https://nodejs.org/en/
 
