@@ -8,7 +8,6 @@ First, you need to install node.js: https://nodejs.org/en/
 
 Then in your terminal:
 ```Shell
-    $echo "127.0.0.1  \*.locahost" >> /etc/hosts
     $git clone https://github.com/albertbuchard/serve-it-quick.git
     $cd serve-it-quick
     $npm install
@@ -23,7 +22,7 @@ subdomain.localhost to your localhost.
 One way to circumvent that is either add \*.localhost to your etc/hosts:
 
 ```Shell
-  $sudo -- sh -c -e "echo '127.0.0.1   \*.localhost' >> /etc/hosts";
+  $sudo -- sh -c -e "echo '127.0.0.1   *.localhost' >> /etc/hosts";
 ```
 
 This will work for chrome, but not safari. For safari you have to explicitly add your
