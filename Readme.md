@@ -3,12 +3,11 @@ A node-php server platform with the simplest of custom router for local developm
 
 !! Subdomains work on Chrome only for now !!
 
-rajoute 
 #Install
 First, you need to install node.js: https://nodejs.org/en/
 
 Then in your terminal:
-
+    $echo "127.0.0.1  \*.locahost" >> /etc/hosts
     $git clone https://github.com/albertbuchard/serve-it-quick.git
     $cd serve-it-quick
     $npm install
@@ -16,6 +15,20 @@ Then in your terminal:
 
 And voila!
 Php server + router running on http://subdomainExample.localhost:8000
+
+#Does not work !?
+Ok if it does not work it might be due to your /etc/hosts that does not redirect
+subdomain.localhost to your localhost.
+One way to circumvent that is either add *.localhost to your etc/hosts:
+
+  $sudo -- sh -c -e "echo '127.0.0.1   \*.localhost' >> /etc/hosts";
+
+This will work for chrome, but not safari. For safari you have to explicitly add your
+subdomain name:
+
+  $sudo -- sh -c -e "echo '127.0.0.1   sundomainName.localhost' >> /etc/hosts";
+
+Post an issue if it still does not work !
 
 #Customize
 The php router file is in lib/server/router.php. To customize the router you can change the subdomains :
